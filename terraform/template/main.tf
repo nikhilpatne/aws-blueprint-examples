@@ -107,10 +107,10 @@ resource "aws_instance" "example_vm" {
     user = var.admin_user
   }
 
-  instance_type = "t2.micro"
+  instance_type = "t2.nano"
 
   tags = {
-    Name = "nikhil-aws-cloudify"
+    Name = "nikhil-aws-cloudify-02"
   }
 
   # Lookup the correct AMI based on the region
