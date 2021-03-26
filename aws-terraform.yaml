@@ -50,15 +50,3 @@ node_templates:
     relationships:
       - target: terraform
         type: cloudify.terraform.relationships.run_on_host
-
-# capabilities:
-#   name:
-#     value: { get_attribute: [ cloud_resources, resources, example_vm, instances, 0, attributes, tags, Name ] }
-
-#   endpoint:
-#     description: The external endpoint of the application.
-#     value: { get_attribute: [ cloud_resources, resources, eip, instances, 0, attributes, public_ip ] }
-
-  user:
-    description: user ID.
-    value: { get_input: agent_user }
