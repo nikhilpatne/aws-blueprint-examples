@@ -50,3 +50,20 @@ node_templates:
     relationships:
       - target: terraform
         type: cloudify.terraform.relationships.run_on_host
+      - target: agent_key
+        type: cloudify.relationships.depends_on
+
+  agent_key:
+    type: cloudify.keys.nodes.RSAKey
+    properties:
+      resource_config:
+        key_name: { get_input: agent_key_name }
+        openssh_format: true
+      use_secret_store: true
+      use_secrets_if_exist: true
+    interfaces:
+      cloudify.interfaces.lifecycle:
+        create:
+          implementation: keys.cloudify_ssh_key.operations.create
+          inputs:
+            store_private_key_material: true
